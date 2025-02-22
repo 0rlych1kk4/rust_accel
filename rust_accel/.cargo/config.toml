@@ -1,0 +1,5 @@
+[target.aarch64-apple-darwin]
+rustflags = [
+    "-C", "link-args=-L/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/lib -lpython3.13"
+]
+
