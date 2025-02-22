@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "rust_accel"
+version = "0.1.0"
+description = "A Rust-accelerated Python module"
+authors = ["Orlando Trajano <orlychikka@gmail.com>"]
+license = "MIT"
+homepage = "https://github.com/0rlych1kk4/rust_accel"
+repository = "https://github.com/0rlych1kk4/rust_accel"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
