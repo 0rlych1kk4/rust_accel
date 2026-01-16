@@ -16,14 +16,15 @@ It is ideal for performance-critical paths in data processing, numerical optimiz
 -  Memory-safe Rust implementation
 
 ---
+
 ## Installation
 
 ### From PyPI (recommended)
 
 ```bash
 pip install rust-accel
-
-From source (development)
+```
+#### From source (development)
 
 ```bash
 git clone https://github.com/0rlych1kk4/rust_accel.git
@@ -32,8 +33,9 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -U pip maturin
 maturin develop
-
+```
 ---
+
 ## Usage
 
 ### optimize_reconstruction
@@ -66,6 +68,7 @@ flat = rust_accel.clone_grad(x)
 
 print(len(flat))     # 6
 print(flat[:3])      # [1.0, 1.0, 1.0]
+```
 
 ---
 ## Real-World Use Cases
@@ -81,7 +84,6 @@ print(flat[:3])      # [1.0, 1.0, 1.0]
 
 The **Contributing** section is where you invite others to contribute to your project. This usually includes basic steps like forking the repository, making changes, and submitting a pull request.
 
-```markdown
 ---
 
 ## Contributing
@@ -92,4 +94,4 @@ We welcome contributions to the `rust_accel` project! If you'd like to contribut
 2. Clone your forked repository to your local machine:
    ```bash
    git clone https://github.com/yourusername/rust_accel.git
-
+   ```
