@@ -4,6 +4,10 @@ name = "rust_accel"
 version = "0.1.1"
 edition = "2021"
 license = "MIT"
+description = "Rust-accelerated Python extension for high-performance numerical computation"
+repository = "https://github.com/0rlych1kk4/rust_accel"
+homepage = "https://github.com/0rlych1kk4/rust_accel"
+documentation = "https://github.com/0rlych1kk4/rust_accel#readme"
 
 [lib]
 name = "rust_accel"
