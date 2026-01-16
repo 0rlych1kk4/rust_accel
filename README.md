@@ -1,39 +1,89 @@
 # rust_accel
 
-**rust_accel** is a Python module that leverages the performance benefits of Rust to accelerate computation-heavy tasks. It provides seamless integration between Python and Rust, making it ideal for high-performance applications that need both flexibility and speed.
+**rust_accel** is a Rust-accelerated Python extension module built with **PyO3** and **maturin**, designed to speed up computation-heavy numerical workloads while keeping a clean, Python-native API.
+
+It is ideal for performance-critical paths in data processing, numerical optimization, and machine-learning pipelines where Python ergonomics and Rust speed are both required.
+
+---
 
 ## Features
 
-- Rust-accelerated functions for high-performance computation.
-- Python bindings for easy integration into Python workflows.
-- Lightweight and easy-to-use.
+-  High-performance Rust kernels exposed to Python
+-  Seamless NumPy-compatible API
+-  Parallelized computation using Rayon
+-  Clean `python/` source layout (no import shadowing)
+-  Prebuilt wheels via maturin
+-  Memory-safe Rust implementation
 
+---
 ## Installation
 
-To install the package, clone the repository and install the required dependencies:
+### From PyPI (recommended)
+
+```bash
+pip install rust-accel
+
+From source (development)
 
 ```bash
 git clone https://github.com/0rlych1kk4/rust_accel.git
 cd rust_accel
-pip install -r requirements.txt  # or use poetry if you have poetry installed
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip maturin
+maturin develop
 
+---
 ## Usage
 
-To use the `rust_accel` package in your Python code, you can import the necessary functions from it. Here's an example:
+### optimize_reconstruction
+Computes a batched dot-product–style loss between an input matrix and multiple gradient matrices.
 
 ```python
-from rust_accel import some_rust_function
 
-# Example usage of a function accelerated by Rust
-result = some_rust_function()
-print(result)
+import numpy as np
+import rust_accel
 
+x = np.ones((2, 3), dtype=np.float32)
+
+grads = np.stack([
+    np.full((2, 3), 2, np.float32),
+    np.full((2, 3), 3, np.float32),
+], axis=0)
+
+loss = rust_accel.optimize_reconstruction(x, grads)
+print(loss)  # 30.0
+
+### clone_grad
+Creates a Rust-side copy of a NumPy array and returns it as a flat Python list.
+
+```python
+import numpy as np
+import rust_accel
+
+x = np.ones((2, 3), dtype=np.float32)
+flat = rust_accel.clone_grad(x)
+
+print(len(flat))     # 6
+print(flat[:3])      # [1.0, 1.0, 1.0]
+
+---
+## Real-World Use Cases
+-  Accelerating inner loops in ML / optimization pipelines
+-  High-frequency numerical aggregation
+-  Scientific computing with Python frontends
+-  Hybrid Python–Rust systems where correctness and speed matter
+-  Safe native extensions without manual memory management
+
+---
 
 ### **2. Contributing Section**
 
 The **Contributing** section is where you invite others to contribute to your project. This usually includes basic steps like forking the repository, making changes, and submitting a pull request.
 
 ```markdown
+---
+
 ## Contributing
 
 We welcome contributions to the `rust_accel` project! If you'd like to contribute, please follow these steps:
