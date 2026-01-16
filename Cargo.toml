@@ -1,11 +1,21 @@
+# Cargo.toml
 [package]
 name = "rust_accel"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+
+[lib]
+name = "rust_accel"
+crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.18.3", features = ["extension-module"] }
+numpy = "0.18"
 ndarray = "0.15"
+rayon = "1"
 
-[lib]
-crate-type = ["cdylib"]
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"

@@ -1,0 +1,5 @@
+# rust-toolchain.toml (pin toolchain for reproducible builds)
+[toolchain]
+channel = "1.80.1"
+profile = "minimal"
+components = ["rustfmt", "clippy"]
