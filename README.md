@@ -80,12 +80,6 @@ print(flat[:3])      # [1.0, 1.0, 1.0]
 
 ---
 
-### **2. Contributing Section**
-
-The **Contributing** section is where you invite others to contribute to your project. This usually includes basic steps like forking the repository, making changes, and submitting a pull request.
-
----
-
 ## Contributing
 
 We welcome contributions to the `rust_accel` project! If you'd like to contribute, please follow these steps:
